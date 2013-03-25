@@ -18,7 +18,8 @@ namespace MtgExplorer.Gatherer
             GathererSetScraper.GetSetContents(set);
             CardLinkFromSpoilerScraper.ExtractCardLinksFromTextSpoiler(set);
             SetToCardRipper.ExtractCardDetailsGatherer(set);
-            CardPageRipper.ExtractAllCardDataFromOracle(set);
+            CardPageRipper.ExtractAllCardDataFromOracle(set, true);
+            CardImageRipper.ExtractCardImagesFromGatherer(set);
         }
     }
 }

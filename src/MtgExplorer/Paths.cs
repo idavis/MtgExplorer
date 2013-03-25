@@ -63,6 +63,15 @@ namespace MtgExplorer
             }
         }
 
+        public static void EnsureFilePathExists(string path)
+        {
+            var directory = Directory.GetParent(path);
+            if (!directory.Exists)
+            {
+                directory.Create();
+            }
+        }
+
         public static string SanitizeFileName(string path)
         {
             string invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));

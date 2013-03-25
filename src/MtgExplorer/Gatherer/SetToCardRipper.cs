@@ -37,7 +37,8 @@ namespace MtgExplorer.Gatherer
         private static void DumpCardPageToFile(HttpClient client, SetNode set, CardLinkInformation card)
         {
             Task<string> response = client.GetStringAsync(card.CardUri);
-            string filePath = Paths.GetCardPath(set, card.MultiverseId);
+            string filePath = Paths.GetCardHtmlPath(set, card.MultiverseId);
+            Paths.EnsureFilePathExists(filePath);
             File.WriteAllText(filePath, response.Result, Encoding.UTF8);
         }
     }

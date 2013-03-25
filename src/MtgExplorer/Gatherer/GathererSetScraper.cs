@@ -13,11 +13,6 @@ namespace MtgExplorer.Gatherer
         {
             using (var client = new HttpClient())
             {
-                Paths.EnsurePathExists("Standard");
-                Paths.EnsurePathExists("Compact");
-                Paths.EnsurePathExists("Checklist");
-                Paths.EnsurePathExists("TextSpoiler");
-
                 GetStandard(client, set);
                 GetCompact(client, set);
                 GetChecklist(client, set);
@@ -52,7 +47,7 @@ namespace MtgExplorer.Gatherer
         private static void DumpSetPageToFile(HttpClient client, Uri uri, string path)
         {
             Task<string> response = client.GetStringAsync(uri);
-            Paths.EnsurePathExists(path);
+            Paths.EnsureFilePathExists(path);
             File.WriteAllText(path, response.Result, Encoding.UTF8);
         }
     }

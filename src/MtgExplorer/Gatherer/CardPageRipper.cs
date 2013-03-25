@@ -236,7 +236,7 @@ namespace MtgExplorer.Gatherer
             foreach (CardInstance card in cards)
             {
                 string filePath = Paths.GetCardPath(set, card.MultiverseId);
-                Paths.EnsurePathExists(filePath);
+                Paths.EnsureFilePathExists(filePath);
                 string contents = JsonConvert.SerializeObject(card, Formatting.Indented);
                 File.WriteAllText(filePath, contents, Encoding.UTF8);
             }

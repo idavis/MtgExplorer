@@ -16,14 +16,20 @@ namespace MtgExplorer.Gatherer
         {
             foreach (SetNode set in SetGenerator.Sets)
             {
-                Task task = ExtractCardImagesFromGatherer(set);
+                Task task = ExtractCardImagesFromGathererAsync(set);
                 Task.WaitAll(task);
             }
         }
 
-        public static async Task ExtractCardImagesFromGatherer(SetNode set)
+        public static void ExtractCardImagesFromGatherer(SetNode set)
         {
-            Console.WriteLine("Set {0}", set.Name);
+            Task task = ExtractCardImagesFromGathererAsync(set);
+            Task.WaitAll(task);
+        }
+
+        public static async Task ExtractCardImagesFromGathererAsync(SetNode set)
+        {
+            Console.WriteLine("Downloading Artwork for Set {0}", set.Name);
             List<CardLinkInformation> cards = LoadCardsForSet(set);
             foreach (CardLinkInformation card in cards)
             {
@@ -31,6 +37,7 @@ namespace MtgExplorer.Gatherer
                 BitmapEncoder encoder = await GetEncoder(card);
 
                 string filePath = Paths.GetCardImagePath(set, card.MultiverseId);
+                Paths.EnsureFilePathExists(filePath);
                 using (var filestream = new FileStream(filePath, FileMode.Create))
                 {
                     encoder.Save(filestream);
