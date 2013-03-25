@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using MtgExplorer.Gatherer;
 using MtgExplorer.Generators;
+using MtgExplorer.Mtg;
 
 namespace MtgExplorer
 {
@@ -8,8 +10,9 @@ namespace MtgExplorer
     {
         private static void Main(string[] args)
         {
-            //GathererScraper.ExportAllGathererData();
-            //ExtractAllCardsFromGatherer();
+            // change to true when done testing
+            // this will force json files to be written to disk.
+            CardPageRipper.ExtractAllCardDataFromOracle(writeCardsToDisk:false);
             //PopulateDatabase();
             Console.WriteLine("Finished...");
             Console.ReadLine();

@@ -156,11 +156,11 @@ namespace MtgExplorer.Gatherer
         private static readonly string[] RulingTextRows = new[]
             {Ctl00RulingTextRow, Ctl05RulingTextRow, Ctl06RulingTextRow};
 
-        public static void ExtractAllCardDataFromOracle()
+        public static void ExtractAllCardDataFromOracle(bool writeCardsToDisk = true)
         {
             foreach (SetNode set in SetGenerator.Sets)
             {
-                ExtractAllCardDataFromOracle(set, writeCardsToDisk: true);
+                ExtractAllCardDataFromOracle(set, writeCardsToDisk);
             }
         }
 

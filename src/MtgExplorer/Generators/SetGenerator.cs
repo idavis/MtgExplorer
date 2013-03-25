@@ -25,7 +25,6 @@ namespace MtgExplorer.Generators
                 nodes.Add(set.Name, nodeRef);
             }
 
-
             SetNodes = new ReadOnlyDictionary<string, NodeReference<SetNode>>(nodes);
             _Initialized = true;
         }
@@ -39,8 +38,8 @@ namespace MtgExplorer.Generators
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Arabian Nights", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Archenemy", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Avacyn Restored", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
-                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Battle Royale Box SetNode", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
-                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Beatdown Box SetNode", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
+                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Battle Royale Box Set", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
+                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Beatdown Box Set", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Betrayers of Kamigawa", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Champions of Kamigawa", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Chronicles", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
@@ -117,7 +116,7 @@ namespace MtgExplorer.Generators
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Premium Deck Series: Fire and Lightning", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Premium Deck Series: Graveborn", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Premium Deck Series: Slivers", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
-                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Promo SetNode for Gatherer", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
+                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Promo Set for Gatherer", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Prophecy", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Ravnica: City of Guilds", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Return to Ravnica", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
@@ -136,7 +135,7 @@ namespace MtgExplorer.Generators
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Tenth Edition", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "The Dark", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Time Spiral", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
-                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Time Spiral," + "Timeshifted", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
+                new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Time Spiral \"Timeshifted\"", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Torment", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Unglued", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
                 new SetNode {ReleaseDate = new DateTime(2000, 02, 5), Name = "Unhinged", ExpansionCode = "", PreReleaseDate = new DateTime(2000, 02, 5),TotalCards = -1, Common = -1, Uncommon = -1, Rare = -1, BasicLand = -1},
@@ -257,8 +256,7 @@ namespace MtgExplorer.Generators
                 "Tenth Edition",
                 "The Dark",
                 "Time Spiral",
-                "Time Spiral," +
-                "Timeshifted",
+                "Time Spiral \"Timeshifted\"",
                 "Torment",
                 "Unglued",
                 "Unhinged",

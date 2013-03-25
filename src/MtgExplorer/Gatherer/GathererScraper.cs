@@ -1,4 +1,6 @@
-﻿using MtgExplorer.Generators;
+﻿using System;
+using System.Diagnostics;
+using MtgExplorer.Generators;
 using MtgExplorer.Mtg;
 
 namespace MtgExplorer.Gatherer
@@ -9,7 +11,14 @@ namespace MtgExplorer.Gatherer
         {
             foreach (SetNode set in SetGenerator.Sets)
             {
+                if (set.Name == "Vanguard")
+                {
+                    continue;
+                }
+                Stopwatch stopwatch = Stopwatch.StartNew();
                 ExportGathererSetData(set);
+                stopwatch.Stop();
+                Console.WriteLine("Processed Set {0} in {1}.", set.Name, stopwatch.Elapsed);
             }
         }
 
