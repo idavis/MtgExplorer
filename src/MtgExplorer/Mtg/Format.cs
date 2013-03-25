@@ -1,0 +1,37 @@
+﻿namespace MtgExplorer.Mtg
+{
+    public enum Format
+    {
+        Classic,
+        Commander,
+        Extended,
+        Freeform,
+        IceAgeBlock,
+        InnistradBlock,
+        InvasionBlock,
+        KamigawaBlock,
+        Legacy,
+        LorwynShadowmoorBlock,
+        MasquesBlock,
+        MirageBlock,
+        MirrodinBlock,
+        Modern,
+        OdysseyBlock,
+        OnslaughtBlock,
+        Prismatic,
+        RavnicaBlock,
+        ReturntoRavnicaBlock,
+        ScarsofMirrodinBlock,
+        ShardsofAlaraBlock,
+        Singleton100,
+        Standard,
+        TempestBlock,
+        TimeSpiralBlock,
+        TribalWarsLegacy,
+        TribalWarsStandard,
+        UnSets,
+        UrzaBlock,
+        Vintage,
+        ZendikarBlock,
+    }
+}

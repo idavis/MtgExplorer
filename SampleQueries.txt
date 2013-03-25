@@ -1,0 +1,15 @@
+START n=node(*)
+MATCH ability<-[:HAS_ABILITY]-n
+WHERE ability.Name = "Haste"
+return n
+
+
+START n=node(*)
+MATCH f<-[:HAS_ABILITY]-n-[:HAS_ABILITY]->h 
+WHERE h.Name = "Haste" and f.Name = "Flying"
+return n
+
+
+START juggernaut=node:card(name='Juggernaut')
+return juggernaut
+
