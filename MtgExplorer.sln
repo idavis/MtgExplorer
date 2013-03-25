@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtgExplorer", "src\MtgExplorer\MtgExplorer.csproj", "{F8F32198-3698-49DE-BFB2-C02A1BEDBAFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtgExplorer.Tests", "src\MtgExplorer.Tests\MtgExplorer.Tests.csproj", "{90C32E69-A7F6-42DC-B8D3-D0A10CFE28A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{F8F32198-3698-49DE-BFB2-C02A1BEDBAFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F32198-3698-49DE-BFB2-C02A1BEDBAFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F32198-3698-49DE-BFB2-C02A1BEDBAFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C32E69-A7F6-42DC-B8D3-D0A10CFE28A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C32E69-A7F6-42DC-B8D3-D0A10CFE28A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C32E69-A7F6-42DC-B8D3-D0A10CFE28A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C32E69-A7F6-42DC-B8D3-D0A10CFE28A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

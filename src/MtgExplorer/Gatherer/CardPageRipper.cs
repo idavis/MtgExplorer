@@ -316,7 +316,7 @@ namespace MtgExplorer.Gatherer
         private static Types[] GetCardTypes(HtmlNode doc)
         {
             HtmlNode node = SelectNodes(doc, "descendant::div[@id=\"{0}\"]/div[@class=\"value\"]", TypeRows).First();
-            string[] typeString = node.InnerText.Trim().Split(new[] {"â€”"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] typeString = node.InnerText.Trim().Split(new[] { "—" }, StringSplitOptions.RemoveEmptyEntries);
             string[] typeStrings = typeString[0].Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
             var types = new List<Types>(typeStrings.Length);
             foreach (string type in typeStrings)
@@ -331,7 +331,7 @@ namespace MtgExplorer.Gatherer
         private static string[] GetCardSubTypes(HtmlNode doc)
         {
             HtmlNode node = SelectNodes(doc, "descendant::div[@id=\"{0}\"]/div[@class=\"value\"]", TypeRows).First();
-            string[] typeString = node.InnerText.Trim().Split(new[] {"â€”"}, StringSplitOptions.RemoveEmptyEntries);
+            string[] typeString = node.InnerText.Trim().Split(new[] { "—" }, StringSplitOptions.RemoveEmptyEntries);
             if (typeString.Length < 2)
             {
                 return new string[0];
