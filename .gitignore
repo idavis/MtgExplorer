@@ -1,6 +1,7 @@
 [B|b]in
 *.nupkg
 packages/
+lib/
 _ReSharper.*
 *.dotCover
 bin
