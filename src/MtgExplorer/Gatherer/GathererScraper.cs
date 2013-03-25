@@ -19,7 +19,7 @@ namespace MtgExplorer.Gatherer
             CardLinkFromSpoilerScraper.ExtractCardLinksFromTextSpoiler(set);
             SetToCardRipper.ExtractCardDetailsGatherer(set);
             CardPageRipper.ExtractAllCardDataFromOracle(set, true);
-            CardImageRipper.ExtractCardImagesFromGatherer(set);
+            //CardImageRipper.ExtractCardImagesFromGatherer(set);
         }
     }
 }

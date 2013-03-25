@@ -8,7 +8,7 @@ namespace MtgExplorer
     {
         private static void Main(string[] args)
         {
-            GathererScraper.ExportGathererSetData(SetGenerator.Sets[0]);
+            //GathererScraper.ExportAllGathererData();
             //ExtractAllCardsFromGatherer();
             //PopulateDatabase();
             Console.WriteLine("Finished...");

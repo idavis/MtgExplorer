@@ -18,9 +18,19 @@ namespace MtgExplorer
     /// </summary>
     public class Paths
     {
-        public static string SetRoot
+        public static string RootDataFolder
         {
             get { return Settings.Default.RootDataFolder; }
+        }
+
+        public static string SetRoot
+        {
+            get { return Path.Combine(RootDataFolder, "SourceData"); }
+        }
+        
+        public static string CardRoot
+        {
+            get { return Path.Combine(RootDataFolder, "Cards"); }
         }
 
         public static string GetSetPath(SetNode set)
@@ -82,7 +92,9 @@ namespace MtgExplorer
 
         public static string GetCardPath(SetNode set)
         {
-            return Path.Combine(GetSetPath(set), "Cards");
+            string safeSetName = SanitizeFileName(set.Name);
+            var setPath = Path.Combine(CardRoot, safeSetName);
+            return setPath;
         }
 
         public static string GetCardPath(SetNode set, string multiverseId)
