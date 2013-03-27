@@ -31,12 +31,8 @@ namespace MtgExplorer.Generators
         {
             foreach (SetNode set in SetGenerator.Sets)
             {
-                var setPath = Paths.GetSetPath(set);
+                var setPath = Paths.GetCardPath(set);
                 
-                if (!Directory.Exists(setPath))
-                {
-                    continue;
-                }
                 string[] files = Directory.GetFiles(setPath);
 
                 foreach (string file in files)
@@ -56,7 +52,7 @@ namespace MtgExplorer.Generators
                         }
                     }
 
-                    CardInstanceNode cardInstanceNode = GetInstanceNode(card, set);
+                    CardInstanceNode cardInstanceNode = GetInstanceNode(card);
                     NodeReference<CardInstanceNode> cinstRef = client.Create(cardInstanceNode);
                     client.CreateRelationship(cinstRef, new CardIsInstanceOfRelationship(cardRef));
                     client.CreateRelationship(cinstRef, new CardIsInSetRelationship(SetGenerator.SetNodes[set.Name]));
@@ -79,7 +75,7 @@ namespace MtgExplorer.Generators
             return cardNode;
         }
 
-        private static CardInstanceNode GetInstanceNode(CardInstance card, SetNode set)
+        private static CardInstanceNode GetInstanceNode(CardInstance card)
         {
             var cardInstanceNode = new CardInstanceNode();
             cardInstanceNode.Name = card.Name;

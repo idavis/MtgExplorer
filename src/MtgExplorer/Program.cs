@@ -12,8 +12,9 @@ namespace MtgExplorer
         {
             // change to true when done testing
             // this will force json files to be written to disk.
-            CardPageRipper.ExtractAllCardDataFromOracle(writeCardsToDisk:false);
+            //CardPageRipper.ExtractAllCardDataFromOracle(writeCardsToDisk:false);
             //PopulateDatabase();
+            PopulateDatabase();
             Console.WriteLine("Finished...");
             Console.ReadLine();
         }
