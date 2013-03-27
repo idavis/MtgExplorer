@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using MtgExplorer.Entities;
 using MtgExplorer.Mtg;
@@ -13,8 +15,8 @@ namespace MtgExplorer.Generators
 {
     public static class MtgUniverseGenerator
     {
-        public static Dictionary<string, NodeReference<CardNode>> Cards =
-            new Dictionary<string, NodeReference<CardNode>>(StringComparer.OrdinalIgnoreCase);
+        public static ConcurrentDictionary<string, NodeReference<CardNode>> Cards =
+            new ConcurrentDictionary<string, NodeReference<CardNode>>(StringComparer.OrdinalIgnoreCase);
 
         public static void Create()
         {
@@ -29,38 +31,48 @@ namespace MtgExplorer.Generators
 
         public static void Create(GraphClient client)
         {
-            foreach (SetNode set in SetGenerator.Sets)
-            {
-                var setPath = Paths.GetCardPath(set);
-                
-                string[] files = Directory.GetFiles(setPath);
-
-                foreach (string file in files)
-                {
-                    string contents = File.ReadAllText(file, Encoding.UTF8);
-                    var card = JsonConvert.DeserializeObject<CardInstance>(contents);
-                    NodeReference<CardNode> cardRef;
-                    if (!Cards.TryGetValue(card.Name, out cardRef))
-                    {
-                        CardNode cardNode = GetCardNode(card);
-                        cardRef = client.Create(cardNode);
-                        Cards.Add(card.Name, cardRef);
-                        foreach (string ability in card.AbilityWords)
-                        {
-                            NodeReference<AbilityNode> abilityRef = AbilityGenerator.AbilityNodes[ability];
-                            client.CreateRelationship(cardRef, new CardHasAbilityRelationship(abilityRef));
-                        }
-                    }
-
-                    CardInstanceNode cardInstanceNode = GetInstanceNode(card);
-                    NodeReference<CardInstanceNode> cinstRef = client.Create(cardInstanceNode);
-                    client.CreateRelationship(cinstRef, new CardIsInstanceOfRelationship(cardRef));
-                    client.CreateRelationship(cinstRef, new CardIsInSetRelationship(SetGenerator.SetNodes[set.Name]));
-                    Console.WriteLine(card.Name);
-                }
-            }
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            SetGenerator.Sets.AsParallel().Select(item => Create(item, client)).ToList();
+            stopwatch.Stop();
+            Console.WriteLine(stopwatch.Elapsed);
         }
 
+        private static TimeSpan Create(SetNode set, GraphClient client)
+        {
+            Console.WriteLine(set.Name);
+
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            
+            var setPath = Paths.GetCardPath(set);
+
+            string[] files = Directory.GetFiles(setPath);
+
+            foreach (string file in files)
+            {
+                string contents = File.ReadAllText(file, Encoding.UTF8);
+                var card = JsonConvert.DeserializeObject<CardInstance>(contents);
+                NodeReference<CardNode> cardRef = Cards.GetOrAdd(card.Name, name => CreateNodeReference(card, client));
+                CardInstanceNode cardInstanceNode = GetInstanceNode(card);
+                NodeReference<CardInstanceNode> cinstRef = client.Create(cardInstanceNode);
+                client.CreateRelationship(cinstRef, new CardIsInstanceOfRelationship(cardRef));
+                client.CreateRelationship(cinstRef, new CardIsInSetRelationship(SetGenerator.SetNodes[set.Name]));
+                //Console.WriteLine(card.Name);
+            }
+            stopwatch.Stop();
+            return stopwatch.Elapsed;
+        }
+
+        private static NodeReference<CardNode> CreateNodeReference(CardInstance card, GraphClient client)
+        {
+            CardNode cardNode = GetCardNode(card);
+            var cardRef = client.Create(cardNode);
+            foreach (string ability in card.AbilityWords)
+            {
+                NodeReference<AbilityNode> abilityRef = AbilityGenerator.AbilityNodes[ability];
+                client.CreateRelationship(cardRef, new CardHasAbilityRelationship(abilityRef));
+            }
+            return cardRef;
+        }
         private static CardNode GetCardNode(CardInstance card)
         {
             var cardNode = new CardNode
